@@ -1,0 +1,7 @@
+name: MonsterCarnival
+version: '${project.version}'
+main: io.github.rotanghub.monstercarnival.MonsterCarnival
+api-version: 1.19
+commands:
+  carnival:
+    default: op

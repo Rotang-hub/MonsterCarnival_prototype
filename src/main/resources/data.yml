@@ -1,0 +1,61 @@
+Monster:
+  ZOMBIE:
+    Level:
+      1:
+        health: 20
+        attack: 3
+        speed: 0.23
+        price: 1
+        drop: 2
+      2:
+        health: 50
+        attack: 5
+        speed: 0.3
+        price: 5
+        drop: 6
+      3:
+        health: 100
+        attack: 7
+        speed: 0.4
+        price: 10
+        drop: 11
+  SKELETON:
+    Level:
+      1:
+        health: 20
+        attack: 3
+        speed: 0.25
+        price: 2
+        drop: 3
+      2:
+        health: 30
+        attack: 5
+        speed: 0.3
+        price: 5
+        drop: 6
+      3:
+        health: 40
+        attack: 8
+        speed: 0.4
+        price: 8
+        drop: 9
+  SPIDER:
+    Level:
+      1:
+        health: 20
+        attack: 3
+        speed: 0.25
+        price: 2
+        drop: 3
+      2:
+        health: 30
+        attack: 5
+        speed: 0.3
+        price: 5
+        drop: 6
+      3:
+        health: 40
+        attack: 8
+        speed: 0.4
+        price: 8
+        drop: 9
