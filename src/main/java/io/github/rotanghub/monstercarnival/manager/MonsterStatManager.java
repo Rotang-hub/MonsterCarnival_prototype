@@ -38,4 +38,29 @@ public class MonsterStatManager
     {
         return dataConfig.getInt("Monster." + type.toString() + ".Level." + level + ".drop");
     }
+
+    public int getMythicHealth(String name)
+    {
+        return dataConfig.getInt("Monster." + name + ".health");
+    }
+
+    public double getMythicSpeed(String name)
+    {
+        return dataConfig.getDouble("Monster." + name + ".speed");
+    }
+
+    public int getMythicAttack(String name)
+    {
+        return dataConfig.getInt("Monster." + name + ".attack");
+    }
+
+    public int getMythicPrice(String name)
+    {
+        return dataConfig.getInt("Monster." + name + ".price");
+    }
+
+    public int getMythicDrop(String name)
+    {
+        return dataConfig.getInt("Monster." + name + ".drop");
+    }
 }

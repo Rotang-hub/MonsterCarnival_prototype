@@ -8,34 +8,94 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class PlayerStatManager
 {
+    Manager manager;
+
+    Map<Player, Integer> coinLimit = new HashMap<>();
+
+    public PlayerStatManager(Manager manager)
+    {
+        this.manager = manager;
+    }
+
+
+    public void setCoinLimit(Player player, int limit)
+    {
+        coinLimit.put(player, limit);
+    }
+
+    public int getCoinLimit(Player player)
+    {
+        return coinLimit.get(player);
+    }
+
+    public int getCoinAmount(Player player)
+    {
+        int amount = 0;
+
+        for(ItemStack item : player.getInventory().getContents())
+        {
+            if(item == null || item.getType().equals(Material.AIR))
+                continue;
+            if(item.getType().equals(manager.getCoin(1).getType()))
+            {
+                amount += item.getAmount();
+            }
+        }
+        return amount;
+    }
+
+    public boolean canUpgradeHealth(Player player, int max)
+    {
+        return player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() < max;
+    }
+
     public void addPlayerMaxHealth(Player player, int add)
     {
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(player.getHealthScale() + add);
-        player.setHealth(player.getHealth() + add);
+        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue((int) player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() + add);
+    }
+
+    public boolean canUpgradeSword(Player player, int max)
+    {
+        int damage = 0;
+        for(ItemStack item : player.getInventory().getContents())
+        {
+            if(item == null || item.getType().isAir()) continue;
+
+            if(item.getType().equals(Material.WOODEN_SWORD))
+            {
+                if(damage <= getWeaponDamage(item)) damage = getWeaponDamage(item);
+            }
+        }
+
+        return damage < max;
     }
 
     public void addSwordDamage(Player player, int add)
     {
         for(ItemStack item : player.getInventory().getContents())
         {
+            if(item == null || item.getType().isAir()) continue;
             if(item.getType().equals(Material.WOODEN_SWORD))
             {
-                addAttackAttribute(item, add);
+                ItemMeta meta = addAttackAttribute(item, add).getItemMeta();
+                item.setItemMeta(meta);
             }
         }
     }
 
-    public void addAttackAttribute(ItemStack item, int stat)
+    public ItemStack addAttackAttribute(ItemStack item, int stat)
     {
         int currentStat = getWeaponDamage(item);
-        setAttackAttribute(item, stat + currentStat);
+        return setAttackAttribute(item, stat + currentStat);
     }
 
-    public void setAttackAttribute(ItemStack item, int add)
+    public ItemStack setAttackAttribute(ItemStack item, int add)
     {
         ItemMeta meta = item.getItemMeta();
 
@@ -50,6 +110,8 @@ public class PlayerStatManager
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speedModifier);
 
         item.setItemMeta(meta);
+
+        return item;
     }
 
     public int getWeaponDamage(ItemStack weapon)

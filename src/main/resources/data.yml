@@ -2,60 +2,175 @@ Monster:
   ZOMBIE:
     Level:
       1:
-        health: 20
-        attack: 3
+        health: 10
+        attack: 1
         speed: 0.23
         price: 1
-        drop: 2
+        drop: 4
       2:
-        health: 50
-        attack: 5
-        speed: 0.3
-        price: 5
-        drop: 6
-      3:
-        health: 100
-        attack: 7
-        speed: 0.4
-        price: 10
-        drop: 11
-  SKELETON:
-    Level:
-      1:
         health: 20
         attack: 3
-        speed: 0.25
-        price: 2
-        drop: 3
-      2:
-        health: 30
-        attack: 5
-        speed: 0.3
-        price: 5
+        speed: 0.26
+        price: 3
         drop: 6
       3:
         health: 40
-        attack: 8
-        speed: 0.4
-        price: 8
+        attack: 5
+        speed: 0.3
+        price: 5
+        drop: 8
+  SKELETON:
+    Level:
+      1:
+        health: 10
+        attack: 2
+        speed: 0.25
+        price: 2
+        drop: 5
+      2:
+        health: 15
+        attack: 3
+        speed: 0.28
+        price: 4
+        drop: 7
+      3:
+        health: 20
+        attack: 5
+        speed: 0.31
+        price: 6
         drop: 9
   SPIDER:
     Level:
       1:
+        health: 15
+        attack: 2
+        speed: 0.25
+        price: 2
+        drop: 5
+      2:
+        health: 25
+        attack: 4
+        speed: 0.28
+        price: 5
+        drop: 8
+      3:
+        health: 35
+        attack: 7
+        speed: 0.31
+        price: 8
+        drop: 11
+  ZOGLIN:
+    Level:
+      1:
+        health: 30
+        attack: 2
+        speed: 0.23
+        price: 5
+        drop: 8
+      2:
+        health: 50
+        attack: 4
+        speed: 0.26
+        price: 7
+        drop: 10
+      3:
+        health: 70
+        attack: 7
+        speed: 0.3
+        price: 10
+        drop: 13
+  WOLF:
+    Level:
+      1:
+        health: 20
+        attack: 3
+        speed: 0.3
+        price: 5
+        drop: 8
+      2:
+        health: 25
+        attack: 6
+        speed: 0.33
+        price: 7
+        drop: 10
+      3:
+        health: 30
+        attack: 9
+        speed: 0.36
+        price: 10
+        drop: 13
+  ZOMBIFIED_PIGLIN:
+    Level:
+      1:
         health: 20
         attack: 3
         speed: 0.25
-        price: 2
-        drop: 3
-      2:
-        health: 30
-        attack: 5
-        speed: 0.3
-        price: 5
-        drop: 6
-      3:
-        health: 40
-        attack: 8
-        speed: 0.4
-        price: 8
+        price: 6
         drop: 9
+      2:
+        health: 35
+        attack: 5
+        speed: 0.26
+        price: 9
+        drop: 12
+      3:
+        health: 50
+        attack: 7
+        speed: 0.27
+        price: 12
+        drop: 15
+
+  NetherZombie:
+    health: 100
+    attack: 5
+    speed: 0.24
+    price: 20
+    drop: 23
+
+  MinerZombie:
+    health: 90
+    attack: 9
+    speed: 0.24
+    price: 23
+    drop: 26
+
+  COW:
+    Level:
+      1:
+        health: 10
+        attack: 0
+        speed: 0.25
+        price: 0
+        drop: 2
+      2:
+        health: 20
+        attack: 0
+        speed: 0.25
+        price: 0
+        drop: 4
+      3:
+        health: 30
+        attack: 0
+        speed: 0.25
+        price: 0
+        drop: 6
+  SHEEP:
+    Level:
+      1:
+        health: 40
+        attack: 0
+        speed: 0.27
+        price: 0
+        drop: 8
+      2:
+        health: 50
+        attack: 0
+        speed: 0.27
+        price: 0
+        drop: 10
+      3:
+        health: 60
+        attack: 0
+        speed: 0.27
+        price: 0
+        drop: 12

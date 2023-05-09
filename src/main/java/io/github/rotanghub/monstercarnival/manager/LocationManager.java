@@ -123,6 +123,16 @@ public class LocationManager
         northDoor = new Location(world, 70.5, 60, -41.5);
     }
 
+    public boolean isRed(Location loc)
+    {
+        return loc.equals(getRedCenter()) || loc.equals(getRedSouthCorner()) || loc.equals(getRedNorthCorner());
+    }
+
+    public boolean isBlue(Location loc)
+    {
+        return loc.equals(getBlueCenter()) || loc.equals(getBlueSouthCorner()) || loc.equals(getBlueNorthCorner());
+    }
+
     public boolean isRedCorner(Location loc)
     {
         return loc.equals(getRedSouthCorner()) || loc.equals(getRedNorthCorner());

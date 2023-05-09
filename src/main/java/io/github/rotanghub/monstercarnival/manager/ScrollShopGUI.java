@@ -3,6 +3,7 @@ package io.github.rotanghub.monstercarnival.manager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -38,77 +39,172 @@ public class ScrollShopGUI implements Listener
 
     public void setButton()
     {
-        menuTab.setItem(10, getZombieScrollButton(1));
-        menuTab.setItem(11, getZombieScrollButton(2));
-        menuTab.setItem(12, getZombieScrollButton(3));
+        menuTab.setItem(0, getZombieScrollButton());
+        menuTab.setItem(3, getSkeletonScrollButton());
+        menuTab.setItem(6, getSpiderScrollButton());
+        menuTab.setItem(18, getZoglinScrollButton());
+        menuTab.setItem(21, getWolfScrollButton());
+        menuTab.setItem(24, getZombifiedPiglinScrollButton());
+        menuTab.setItem(36, getIncomeScrollButton());
 
-        menuTab.setItem(14, getSkeletonScrollButton(1));
-        menuTab.setItem(15, getSkeletonScrollButton(2));
-        menuTab.setItem(16, getSkeletonScrollButton(3));
-
-        menuTab.setItem(19, getSpiderScrollButton(1));
-        menuTab.setItem(20, getSpiderScrollButton(2));
-        menuTab.setItem(21, getSpiderScrollButton(3));
+        menuTab.setItem(1, getZombieUpgradeButton());
+        menuTab.setItem(4, getSkeletonUpgradeButton());
+        menuTab.setItem(7, getSpiderUpgradeButton());
+        menuTab.setItem(19, getZoglinUpgradeButton());
+        menuTab.setItem(22, getWolfUpgradeButton());
+        menuTab.setItem(25, getZombifiedPiglinUpgradeButton());
+        menuTab.setItem(37, getIncomeUpgradeButton());
     }
 
-    public ItemStack getZombieScrollButton(int level)
+    public ItemStack getZombieScrollButton()
     {
-        ItemStack item = new ItemStack(manager.getZombieSummonScroll(level));
+        ItemStack item = new ItemStack(manager.getZombieSummonerScroll());
         ItemMeta meta = item.getItemMeta();
-        meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.ZOMBIE, level) + "개"));
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.ZOMBIE, 0) + "개"));
         item.setItemMeta(meta);
 
         return item;
     }
 
-    public ItemStack getSkeletonScrollButton(int level)
+    public ItemStack getSkeletonScrollButton()
     {
-        ItemStack item = new ItemStack(manager.getSkeletonSummonScroll(level));
+        ItemStack item = new ItemStack(manager.getSkeletonSummonerScroll());
         ItemMeta meta = item.getItemMeta();
-        meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.SKELETON, level) + "개"));
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.SKELETON, level) + "개"));
         item.setItemMeta(meta);
 
         return item;
     }
 
-    public ItemStack getSpiderScrollButton(int level)
+    public ItemStack getSpiderScrollButton()
     {
-        ItemStack item = new ItemStack(manager.getSpiderSummonScroll(level));
+        ItemStack item = new ItemStack(manager.getSpiderSummonerScroll());
         ItemMeta meta = item.getItemMeta();
-        meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.SPIDER, level) + "개"));
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.SPIDER, level) + "개"));
         item.setItemMeta(meta);
 
         return item;
     }
 
-    public void buyZombieScroll(Player player, int level)
+    public ItemStack getZoglinScrollButton()
     {
-        int price = manager.statManager.getPrice(EntityType.ZOMBIE, level);
-        if(hasItems(player, manager.getCoin(1), price))
-        {
-            removeItems(player, manager.getCoin(1), price);
-            player.getInventory().addItem(manager.getZombieSummonScroll(level));
-        }
+        ItemStack item = new ItemStack(manager.getZoglinSummonerScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.ZOGLIN, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
     }
 
-    public void buySkeletonScroll(Player player, int level)
+    public ItemStack getWolfScrollButton()
     {
-        int price = manager.statManager.getPrice(EntityType.SKELETON, level);
-        if(hasItems(player, manager.getCoin(1), price))
-        {
-            removeItems(player, manager.getCoin(1), price);
-            player.getInventory().addItem(manager.getSkeletonSummonScroll(level));
-        }
+        ItemStack item = new ItemStack(manager.getWolfSummonerScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.WOLF, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
     }
 
-    public void buySpiderScroll(Player player, int level)
+    public ItemStack getZombifiedPiglinScrollButton()
     {
-        int price = manager.statManager.getPrice(EntityType.SPIDER, level);
+        ItemStack item = new ItemStack(manager.getZombifiedPiglinSummonerScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.WOLF, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getIncomeScrollButton()
+    {
+        ItemStack item = new ItemStack(manager.getIncomeSummonerScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.WOLF, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getZombieUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getZombieUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.ZOMBIE, 0) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getSkeletonUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getSkeletonUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.SKELETON, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getSpiderUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getSpiderUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.SPIDER, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getZoglinUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getZoglinUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.ZOGLIN, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getWolfUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getWolfUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.WOLF, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getZombifiedPiglinUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getZombifiedPiglinUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.ZOMBIFIED_PIGLIN, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public ItemStack getIncomeUpgradeButton()
+    {
+        ItemStack item = new ItemStack(manager.getIncomeUpgradeScroll());
+        ItemMeta meta = item.getItemMeta();
+        //meta.setLore(Arrays.asList(ChatColor.WHITE + "가격: 코인" + manager.statManager.getPrice(EntityType.WOLF, level) + "개"));
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    public void buyItem(Player player, ItemStack item, int price)
+    {
         if(hasItems(player, manager.getCoin(1), price))
         {
             removeItems(player, manager.getCoin(1), price);
-            player.getInventory().addItem(manager.getSpiderSummonScroll(level));
+            player.getInventory().addItem(item);
+            player.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 5, 1);
         }
+        else player.playSound(player, Sound.UI_BUTTON_CLICK, 5, 1);
     }
 
     public boolean hasItems(Player player, ItemStack item, int amount)
@@ -156,7 +252,7 @@ public class ScrollShopGUI implements Listener
     public void onInventoryClick(InventoryClickEvent event)
     {
         if(event.getClickedInventory() == null) return;
-        if(event.getClickedInventory().equals(getMenuTab()) && event.getClick().equals(ClickType.LEFT))
+        if(event.getClickedInventory().equals(getMenuTab()))
         {
             Player player = (Player) event.getWhoClicked();
             if(!player.equals(this.player)) return;
@@ -166,17 +262,65 @@ public class ScrollShopGUI implements Listener
 
             event.setCancelled(true);
 
-            if(item.getType().equals(getZombieScrollButton(1).getType()))
+            if(event.getClick().equals(ClickType.LEFT))
             {
-                buyZombieScroll(player, manager.getMonsterLevel(item));
-            }
-            if(item.getType().equals(getSkeletonScrollButton(1).getType()))
-            {
-                buySkeletonScroll(player, manager.getMonsterLevel(item));
-            }
-            if(item.getType().equals(getSpiderScrollButton(1).getType()))
-            {
-                buySpiderScroll(player, manager.getMonsterLevel(item));
+                if(item.isSimilar(getZombieScrollButton()))
+                {
+                    buyItem(player, manager.getZombieSummonerScroll(), 0);
+                }
+                if(item.isSimilar(getSkeletonScrollButton()))
+                {
+                    buyItem(player, manager.getSkeletonSummonerScroll(), 0);
+                }
+                if(item.isSimilar(getSpiderScrollButton()))
+                {
+                    buyItem(player, manager.getSpiderSummonerScroll(), 0);
+                }
+                if(item.isSimilar(getZoglinScrollButton()))
+                {
+                    buyItem(player, manager.getZoglinSummonerScroll(), 0);
+                }
+                if(item.isSimilar(getWolfScrollButton()))
+                {
+                    buyItem(player, manager.getWolfSummonerScroll(), 0);
+                }
+                if(item.isSimilar(getZombifiedPiglinScrollButton()))
+                {
+                    buyItem(player, manager.getZombifiedPiglinSummonerScroll(), 0);
+                }
+                if(item.isSimilar(getIncomeScrollButton()))
+                {
+                    buyItem(player, manager.getIncomeSummonerScroll(), 0);
+                }
+
+                if(item.isSimilar(getZombieUpgradeButton()))
+                {
+                    buyItem(player, manager.getZombieUpgradeScroll(), 0);
+                }
+                if(item.isSimilar(getSkeletonUpgradeButton()))
+                {
+                    buyItem(player, manager.getSkeletonUpgradeScroll(), 0);
+                }
+                if(item.isSimilar(getSpiderUpgradeButton()))
+                {
+                    buyItem(player, manager.getSpiderUpgradeScroll(), 0);
+                }
+                if(item.isSimilar(getZoglinUpgradeButton()))
+                {
+                    buyItem(player, manager.getZoglinUpgradeScroll(), 0);
+                }
+                if(item.isSimilar(getWolfUpgradeButton()))
+                {
+                    buyItem(player, manager.getWolfUpgradeScroll(), 0);
+                }
+                if(item.isSimilar(getZombifiedPiglinUpgradeButton()))
+                {
+                    buyItem(player, manager.getZombifiedPiglinUpgradeScroll(), 0);
+                }
+                if(item.isSimilar(getIncomeUpgradeButton()))
+                {
+                    buyItem(player, manager.getIncomeUpgradeScroll(), 0);
+                }
             }
         }
 
